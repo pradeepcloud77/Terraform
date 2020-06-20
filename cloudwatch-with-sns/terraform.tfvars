@@ -1,0 +1,7 @@
+access_key = "<access key>"
+secret_key = "<secret key>"
+symphony_ip = "<symphony ip>"
+aws_ami = "<image ami>"
+user_id = "admin"
+sns_topic_name_prefix = "cloudwatch-sns-topic"
+cloudwatch_alarm_prefix = "cloudwatch_alarm_"

@@ -1,0 +1,36 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "custom_endpoint_ec2": "https://${symphony_ip}/api/v2/aws/ec2",
+    "access_key": "${aws_access_key}",
+    "secret_key": "${aws_secret_key}",
+    "region": "symphony",
+    "communicator": "ssh",
+    "skip_region_validation": true,
+    "insecure_skip_tls_verify": true,
+    "source_ami": "${packer_ami_image}",
+    "subnet_id": "${subnet_id}",
+    "vpc_id": "${vpc_id}",
+    "security_group_ids": [${sg_ids}],
+    "instance_type": "t2.micro",
+    "ami_name": "packer-example {{timestamp}}",
+    "ssh_interface": "private_ip",
+    "ssh_keypair_name": "${kp_name}",
+    "ssh_username": "${bastion_user_name}",
+    "ssh_private_key_file": "${private_keypair_path}",
+    "ssh_bastion_host": "${bastion_public_ip}",
+    "ssh_bastion_port": 22,
+    "ssh_bastion_username": "${packer_user_name}",
+    "ssh_bastion_private_key_file": "${private_keypair_path}"
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "export LC_ALL=\"en_US.UTF-8\"",
+        "sudo apt-get update -y",
+        "sudo apt-get upgrade -y",
+        "sudo apt-get install -y docker.io"
+      ]
+    }]
+}

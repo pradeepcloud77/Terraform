@@ -1,0 +1,6 @@
+ubuntu_ami = "<ami id>"
+access_key = "<access>"
+secret_key = "<secret>"
+symphony_ip = "<stratoscale region ip>"
+key_name = "<keypair>"
+sg_web_servers = "<security group name>"
